@@ -150,3 +150,8 @@ npm run dev
 4. Test API endpoints directly via [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
+
+![Smart Task Manager - View Tasks](./frontend/public/Tasks_view.png)
+
+
+![Smart Task Manager - Add Tasks](./frontend/public/Add_Tasks.png)
