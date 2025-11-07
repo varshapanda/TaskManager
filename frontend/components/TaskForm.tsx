@@ -29,70 +29,61 @@ export default function TaskForm({ onSubmit, onCancel }: TaskFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-gray-200 p-8 mb-12">
-      <h2 className="text-2xl font-light text-black mb-6">New Task</h2>
-      
+    <form onSubmit={handleSubmit} className="bg-white border border-gray-300 p-8 shadow-sm hover:shadow-md transition-shadow">
       <div className="mb-6">
-        <label htmlFor="title" className="block text-sm font-medium text-black mb-3">
-          TITLE
-        </label>
         <input
           id="title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 bg-white text-black focus:outline-none focus:border-black transition-colors placeholder-gray-400"
-          placeholder="Enter task title"
+          className="w-full px-0 py-2 border-0 border-b border-gray-200 bg-transparent text-2xl font-light text-black focus:outline-none focus:border-black transition-colors placeholder-gray-400"
+          placeholder="Task title"
           required
         />
       </div>
 
       <div className="mb-6">
-        <label htmlFor="description" className="block text-sm font-medium text-black mb-3">
-          DESCRIPTION
-        </label>
         <textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 bg-white text-black focus:outline-none focus:border-black transition-colors placeholder-gray-400 resize-none"
-          placeholder="Enter task description"
-          rows={4}
+          className="w-full px-0 py-2 border-0 bg-transparent text-base text-gray-700 focus:outline-none placeholder-gray-400 resize-none"
+          placeholder="Add description..."
+          rows={3}
         />
       </div>
 
-      <div className="mb-8">
-        <label htmlFor="priority" className="block text-sm font-medium text-black mb-3">
-          PRIORITY
-        </label>
-        <select
-          id="priority"
-          value={priority}
-          onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
-          className="w-full px-4 py-3 border border-gray-200 bg-white text-black focus:outline-none focus:border-black transition-colors"
-        >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
-
-      <div className="flex gap-4">
-        <button
-          type="submit"
-          className="px-6 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors"
-        >
-          Add Task
-        </button>
-        {onCancel && (
-          <button
-            type="button"
-            onClick={onCancel}
-            className="px-6 py-3 bg-white border border-gray-300 text-black font-medium hover:bg-gray-50 transition-colors"
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <select
+            id="priority"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
+            className="px-3 py-1.5 text-xs font-medium border border-gray-300 bg-white text-gray-700 focus:outline-none focus:border-black transition-colors rounded"
           >
-            Cancel
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+        </div>
+
+        <div className="flex gap-2">
+          {onCancel && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="px-4 py-1.5 text-sm font-medium text-gray-600 hover:text-black transition-colors"
+            >
+              Cancel
+            </button>
+          )}
+          <button
+            type="submit"
+            className="px-4 py-1.5 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors rounded"
+          >
+            Add Task
           </button>
-        )}
+        </div>
       </div>
     </form>
   );
